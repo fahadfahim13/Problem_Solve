@@ -8,3 +8,5 @@ class BinaryTree:
     def __int__(self, data):
         self.root = Node(data)
 
+
+
