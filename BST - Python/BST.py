@@ -1,3 +1,5 @@
+import math
+
 from Binary_Tree_Python.Node import Node
 
 
@@ -22,9 +24,9 @@ class BST():
 
     def search(self, node, val):
         if node is None:
-            return False
+            return None
         if node.value == val:
-            return True
+            return node
         return self.search(node.left, val) or self.search(node.right, val)
 
     def getParentNode(self, node, val):
@@ -53,6 +55,44 @@ class BST():
 
         return None
 
+    def inorder_parent(self, node, val):
+        if node is None:
+            return None
+        newnode = None
+
+        while node is not None:
+            if node.value < val:
+                newnode = None
+                node = node.right
+            elif node.value > val:
+                newnode = node
+                node = node.left
+            else:
+                return newnode
+        return newnode
+
+    def inorder_successor(self, node, val):
+        if node is None:
+            return None
+        ans_node = self.search(node, val)
+        if ans_node is not None and ans_node.right is not None:
+            return ans_node.right
+        return None
+
+    def diff_of_even_odd_levels(self, node):
+        if node is None:
+            return 0
+        return node.value - self.diff_of_even_odd_levels(node.left) - self.diff_of_even_odd_levels(node.right)
+
+    def get_max(self, node):
+        if node is None:
+            return 0
+        return max(node.value, self.get_max(node.right))
+
+    def get_min(self, node):
+        if node is None:
+            return math.inf
+        return min(node.value, self.get_min(node.left))
 
 
 if __name__ == '__main__':
@@ -65,15 +105,17 @@ if __name__ == '__main__':
     tree.inorder(root)
     print()
     print(tree.search(root, 1))
-    parent = tree.getParentNode(root, 14)
+    parent = tree.inorder_parent(root, 4)
     if parent is not None:
         print(parent.value)
     else:
-        print("Node not found")
+        print("Parent not found")
 
-    sibling = tree.findSibling(root, 6)
+    sibling = tree.inorder_successor(root, 14)
     if sibling is not None:
         print(sibling.value)
     else:
         print("No Sibling")
+
+    print(tree.get_min(root))
 
