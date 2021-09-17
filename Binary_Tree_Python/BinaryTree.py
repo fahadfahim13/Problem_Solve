@@ -162,7 +162,6 @@ class BinaryTree:
         self.print_right_view(node.left, level + 1)
 
 
-
 if __name__ == '__main__':
     tree = BinaryTree()
     tree.root = Node(5)
