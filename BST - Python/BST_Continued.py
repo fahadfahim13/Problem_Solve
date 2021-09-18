@@ -112,8 +112,6 @@ class BST_Continued(BST):
             return self.checkEqual(node.left, node2.left) and self.checkEqual(node.right, node2.right)
 
 
-
-
 if __name__ == '__main__':
     # data = [8, 3, 6, 10, 4, 7, 1, 14, 13]
     data = [8, 6, 2, 7, 15, 1, 3, 13, 20, 12, 14, 16, 21]
