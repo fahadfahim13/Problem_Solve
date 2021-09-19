@@ -21,12 +21,23 @@ class BST():
         print(node.value, end=" ")
         self.inorder(node.right)
 
+    def preorder(self, node):
+        if node is None:
+            return
+        print(node.value, end=" ")
+        self.preorder(node.left)
+        self.preorder(node.right)
+
     def search(self, node, val):
         if node is None:
             return None
         if node.value == val:
             return node
-        return self.search(node.left, val) or self.search(node.right, val)
+        left_found = self.search(node.left, val)
+        if left_found is not None:
+            return left_found
+        else:
+            return self.search(node.right, val)
 
     def getParentNode(self, node, val):
         if node.value == val:
@@ -70,12 +81,17 @@ class BST():
                 return newnode
         return newnode
 
-    def inorder_successor(self, node, val):
-        if node is None:
+    def inorder_successor(self, start_node, val):
+        if start_node is None:
             return None
-        ans_node = self.search(node, val)
-        if ans_node is not None and ans_node.right is not None:
-            return ans_node.right
+        ans_node = self.search(start_node, val)
+        if ans_node is not None:
+            right = ans_node.right
+            find_left = right
+            while find_left is not None:
+                right = find_left
+                find_left = find_left.left
+            return right
         return None
 
     def diff_of_even_odd_levels(self, node):
@@ -92,6 +108,24 @@ class BST():
         if node is None:
             return math.inf
         return min(node.value, self.get_min(node.left))
+
+    def deleteValue(self, node, val):
+        if not node:
+            return None
+        if node.value == val:
+            if not node.left and not node.right:
+                return None
+            elif node.left and not node.right:
+                return node.left
+            elif node.right and not node.left:
+                return node.right
+            else:
+                return self.inorder_successor(node, val)
+        elif node.value > val:
+            node.left = self.deleteValue(node.left, val)
+        else:
+            node.right = self.deleteValue(node.right, val)
+        return node
 
 
 if __name__ == '__main__':

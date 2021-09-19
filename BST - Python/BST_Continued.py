@@ -128,6 +128,12 @@ if __name__ == '__main__':
 
     arr = []
     tree.convertToSortedArray(root, arr)
+
+    print("Delete Starting.... ")
+    tree.deleteValue(root, 20)
+    tree.inorder(root)
+    print()
+
     print(arr)
     print(tree.existTripletSum(root, -1))
     lca = tree.LCA(root, 15, 21)

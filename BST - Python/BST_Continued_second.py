@@ -67,6 +67,27 @@ class BSTContinuedSecond(BST_Continued):
                 newnode = newnode.left
         return list
 
+    def getBBST(self, node):
+        if node is None:
+            return
+        arr = []
+        self.convertToSortedArray(node, arr)
+        if arr is None:
+            return None
+        return self.constructBBST(arr, 0, len(arr) - 1)
+
+    def constructBBST(self, arr, st, end):
+        if arr is None or len(arr) <= 0 or st > end or st > len(arr) or end > len(arr) or st < 0:
+            return None
+        if st == end:
+            return Node(arr[st])
+        mid = (st + end) // 2
+        node = Node(arr[mid])
+        node.left = self.constructBBST(arr, st, mid - 1)
+        node.right = self.constructBBST(arr, mid + 1, end)
+
+        return node
+
 
 data = [8, 6, 2, 7, 15, 1, 3, 13, 20, 12, 14, 16, 21]
 tree = BSTContinuedSecond()
@@ -78,3 +99,11 @@ print(tree.checkBst(root))
 print(tree.checkBSTRec(root))
 list = tree.getSortedDoublyLinkedList(root)
 list.printLinkedList()
+
+balanced_tree_node = tree.getBBST(root)
+if balanced_tree_node is not None:
+    balanced_tree = BSTContinuedSecond()
+    balanced_tree.insert(balanced_tree_node, balanced_tree_node.value)
+    balanced_tree.preorder(balanced_tree_node)
+    print()
+    balanced_tree.inorder(balanced_tree_node)
