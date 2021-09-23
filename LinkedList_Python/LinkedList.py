@@ -13,6 +13,7 @@ class LinkedList:
 
         newlink = Link()
         newlink.data = data
+        newlink.next = None
         if self.length == 0:
             self.head = newlink
             self.tail = self.head
@@ -49,6 +50,17 @@ class LinkedList:
         if self.length == 0:
             return None
         return self.tail.data
+
+    def getLength(self):
+        return self.length
+
+    def deleteFirst(self):
+        if self.length == 0:
+            return None
+        tmp = self.head
+        self.head = self.head.next
+        self.length = self.length - 1
+        return tmp.data
 
     def printList(self):
         if self.length == 0:
