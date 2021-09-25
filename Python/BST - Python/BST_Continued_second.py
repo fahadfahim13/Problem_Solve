@@ -85,25 +85,36 @@ class BSTContinuedSecond(BST_Continued):
         node = Node(arr[mid])
         node.left = self.constructBBST(arr, st, mid - 1)
         node.right = self.constructBBST(arr, mid + 1, end)
-
         return node
 
+    def inorder_predecessor(self, node):
+        if node is None:
+            return
+        pred = node
+        node = node.left
+        while node is not None:
+            pred = node
+            node = node.right
+        return pred
 
-data = [8, 6, 2, 7, 15, 1, 3, 13, 20, 12, 14, 16, 21]
-tree = BSTContinuedSecond()
-root = tree.insert(None, data[0])
-for i in range(1, len(data)):
-    tree.insert(root, data[i])
 
-print(tree.checkBst(root))
-print(tree.checkBSTRec(root))
-list = tree.getSortedDoublyLinkedList(root)
-list.printLinkedList()
+if __name__ == '__main__':
+    data = [8, 6, 2, 7, 15, 1, 3, 13, 20, 12, 14, 16, 21]
+    tree = BSTContinuedSecond()
+    root = tree.insert(None, data[0])
+    for i in range(1, len(data)):
+        tree.insert(root, data[i])
 
-balanced_tree_node = tree.getBBST(root)
-if balanced_tree_node is not None:
-    balanced_tree = BSTContinuedSecond()
-    balanced_tree.insert(balanced_tree_node, balanced_tree_node.value)
-    balanced_tree.preorder(balanced_tree_node)
-    print()
-    balanced_tree.inorder(balanced_tree_node)
+    print(tree.checkBst(root))
+    print(tree.checkBSTRec(root))
+    list = tree.getSortedDoublyLinkedList(root)
+    list.printLinkedList()
+    print("Inorder Predecessor: ", end=" ")
+    print(tree.inorder_predecessor(root.right.right.right).value)
+    balanced_tree_node = tree.getBBST(root)
+    if balanced_tree_node is not None:
+        balanced_tree = BSTContinuedSecond()
+        balanced_tree.insert(balanced_tree_node, balanced_tree_node.value)
+        balanced_tree.preorder(balanced_tree_node)
+        print()
+        balanced_tree.inorder(balanced_tree_node)
