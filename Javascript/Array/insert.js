@@ -4,7 +4,8 @@ const insertFirst = (arr, item) => {
 }
 
 const insertLast = (arr, item) => {
-    arr.push(item)
+//    arr.push(item)
+    arr.splice(arr.length(), 0, item)
     return arr
 }
 
