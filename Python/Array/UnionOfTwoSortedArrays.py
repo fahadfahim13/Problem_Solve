@@ -26,4 +26,4 @@ if __name__ == '__main__':
     arr1 = [1, 2, 3, 5, 8, 12]
     arr2 = [3, 5, 7, 8, 10, 11, 14, 15]
 
-    print(union_of_two_sorted_arrays(arr1, arr2))
+    print(union_of_two_sorted_arrays(arr2, arr1))
