@@ -1,5 +1,5 @@
 import string
-from typing import List
+from typing import List, Callable
 import random
 from abc import ABC, abstractmethod
 
@@ -25,28 +25,22 @@ class TicketProcessingStrategy(ABC):
         pass
 
 
-class FIFOProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        return list.copy()
+def fifo_processing_strategy(inp_list: List[SupportTicket]) -> List[SupportTicket]:
+    return inp_list.copy()
 
 
-class FILOProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        list_copy = list.copy()
-        list_copy.reverse()
-        return list_copy
+def filo_processing_strategy(inp_list: List[SupportTicket]) -> List[SupportTicket]:
+    return list(reversed(inp_list.copy()))
 
 
-class RandomProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        list_copy = list.copy()
-        random.shuffle(list_copy)
-        return list_copy
+def random_processing_strategy(inp_list: List[SupportTicket]) -> List[SupportTicket]:
+    ans_list = inp_list.copy()
+    random.shuffle(ans_list)
+    return list(ans_list)
 
 
-class BlackHoleProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        return []
+def blackhole_processing_strategy(inp_list: List[SupportTicket]) -> List[SupportTicket]:
+    return []
 
 
 class CustomerSupport:
@@ -62,9 +56,9 @@ class CustomerSupport:
         print(f"Issue: {ticket.issue}")
         print("====================")
 
-    def process_tickets(self, processing_strategy: TicketProcessingStrategy):
+    def process_tickets(self, processing_strategy_fn: Callable[[List[SupportTicket]], List[SupportTicket]]):
         print("New Strategy")
-        temp_tickets = processing_strategy.process_tickets(self.tickets)
+        temp_tickets = processing_strategy_fn(self.tickets)
         if len(temp_tickets) == 0:
             print("There are no tickets to process.")
         for i in temp_tickets:
@@ -78,12 +72,7 @@ if __name__ == "__main__":
     app.create_ticket("C", "issue 3")
     app.create_ticket("D", "issue 4")
 
-    fifo_strategy = FIFOProcessingStrategy()
-    filo_strategy = FILOProcessingStrategy()
-    random_strategy = RandomProcessingStrategy()
-    blackhole_strategy = BlackHoleProcessingStrategy()
-
-    app.process_tickets(fifo_strategy)
-    app.process_tickets(filo_strategy)
-    app.process_tickets(random_strategy)
-    app.process_tickets(blackhole_strategy)
+    app.process_tickets(fifo_processing_strategy)
+    app.process_tickets(filo_processing_strategy)
+    app.process_tickets(random_processing_strategy)
+    app.process_tickets(blackhole_processing_strategy)
