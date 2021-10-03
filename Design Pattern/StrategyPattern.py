@@ -21,31 +21,31 @@ class SupportTicket:
 
 class TicketProcessingStrategy(ABC):
     @abstractmethod
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
+    def process_tickets(self, new_list: List[SupportTicket]) -> List[SupportTicket]:
         pass
 
 
 class FIFOProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        return list.copy()
+    def process_tickets(self, new_list: List[SupportTicket]) -> List[SupportTicket]:
+        return new_list.copy()
 
 
 class FILOProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        list_copy = list.copy()
+    def process_tickets(self, new_list: List[SupportTicket]) -> List[SupportTicket]:
+        list_copy = new_list.copy()
         list_copy.reverse()
         return list_copy
 
 
 class RandomProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
-        list_copy = list.copy()
+    def process_tickets(self, new_list: List[SupportTicket]) -> List[SupportTicket]:
+        list_copy = new_list.copy()
         random.shuffle(list_copy)
         return list_copy
 
 
 class BlackHoleProcessingStrategy(TicketProcessingStrategy):
-    def process_tickets(self, list: List[SupportTicket]) -> List[SupportTicket]:
+    def process_tickets(self, new_list: List[SupportTicket]) -> List[SupportTicket]:
         return []
 
 
