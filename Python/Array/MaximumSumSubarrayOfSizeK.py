@@ -1,7 +1,7 @@
 import math
 
 
-def maximum_size_aubarray_with_size_k(arr, size):
+def maximum_size_subarray_with_size_k(arr, size):
     max_sum = -math.inf
     left = 0
     right = size
@@ -16,4 +16,4 @@ def maximum_size_aubarray_with_size_k(arr, size):
 
 if __name__ == "__main__":
     arr = [1, 4, 20, 3, 10, 5]
-    print(maximum_size_aubarray_with_size_k(arr, 3))
+    print(maximum_size_subarray_with_size_k(arr, 3))
