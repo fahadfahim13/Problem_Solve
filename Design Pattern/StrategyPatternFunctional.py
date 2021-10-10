@@ -57,7 +57,7 @@ class CustomerSupport:
         print("====================")
 
     def process_tickets(self, processing_strategy_fn: Callable[[List[SupportTicket]], List[SupportTicket]]):
-        print("New Strategy")
+        print("Interview Strategy")
         temp_tickets = processing_strategy_fn(self.tickets)
         if len(temp_tickets) == 0:
             print("There are no tickets to process.")

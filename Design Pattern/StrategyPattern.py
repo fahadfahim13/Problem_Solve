@@ -63,7 +63,7 @@ class CustomerSupport:
         print("====================")
 
     def process_tickets(self, processing_strategy: TicketProcessingStrategy):
-        print("New Strategy")
+        print("Interview Strategy")
         temp_tickets = processing_strategy.process_tickets(self.tickets)
         if len(temp_tickets) == 0:
             print("There are no tickets to process.")

@@ -28,24 +28,25 @@ def smallest_sub_string_with_anagram(big_string: str, pattern: str) -> str or No
             pattern_map[big_string[end]] -= 1
             if pattern_map[big_string[end]] >= 0:
                 matched += 1
-        while start < end and matched == len(pattern_map):
+        while start < end and matched == len(pattern):
             if end - start < min_len:
                 min_len = end - start + 1
                 output_string = big_string[start:end+1]
             if big_string[start] in pattern_map:
                 pattern_map[big_string[start]] += 1
-                if pattern_map[big_string[start]] == 0:
+                if pattern_map[big_string[start]] > 0:
                     matched -= 1
             start += 1
         end += 1
-        print(output_string)
+    print(output_string)
     return min_len
 
 
 def main():
     # string = "bcdcbabcbd"
-    string = "abbaacdbcedab"
-    pattern = "abbbbc"
+    # string = "abbaacdbcedab"
+    string = "badeaebbbcabbae"
+    pattern = "aabc"
     print(smallest_sub_string_with_anagram(string, pattern))
 
 
