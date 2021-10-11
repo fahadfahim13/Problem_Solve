@@ -1,4 +1,5 @@
 from GraphnIntroduction import AdjacencyListGraph
+from queue import Queue
 
 
 class DFS(AdjacencyListGraph):
@@ -24,14 +25,38 @@ class DFS(AdjacencyListGraph):
         print()
 
 
+class BFS(AdjacencyListGraph):
+
+    def traverse_graph(self):
+        q = Queue()
+        visited = [0 for i in range(self.number_of_nodes)]
+        if len(self.node_list) > 0:
+            q.put(0)
+            visited[0] = 1
+        while not q.empty():
+            tmp = q.get()
+            print(tmp, end=" ")
+            for i in self.node_list[tmp]:
+                if visited[i] == 0:
+                    visited[i] = 1
+                    q.put(i)
+        print()
+
+
 def main():
     arr = [[1, 2], [2, 3], [2, 4], [3, 4]]
     n = 4
-    list_graph = DFS(n)
+    # list_graph = DFS(n)
+    # for edge in arr:
+    #     list_graph.insert_nodes(edge[0] - 1, edge[1] - 1)
+    # list_graph.print_graph()
+    # list_graph.traverse_graph()
+
+    bfs_graph = BFS(n)
     for edge in arr:
-        list_graph.insert_nodes(edge[0] - 1, edge[1] - 1)
-    list_graph.print_graph()
-    list_graph.traverse_graph()
+        bfs_graph.insert_nodes(edge[0] - 1, edge[1] - 1)
+    # bfs_graph.print_graph()
+    bfs_graph.traverse_graph()
 
 
 if __name__ == "__main__":
