@@ -1,11 +1,16 @@
 class Vertex:
-    name: str
-    neighbours: list
-    discovery: bool
-    finish: int
-    color: int
+    name: str or int
+    visited: bool
+    weight: int
 
-    def add_neighbour(self, v):
-        if v is None or v < 0:
-            return None
-        self.neighbours.append(v)
+    def __init__(self, name, weight=1):
+        self.name = name
+        self.visited = False
+        self.weight = weight
+
+    def set_visited(self):
+        self.visited = True
+
+    def set_weight(self, weight):
+        self.weight = weight
+
