@@ -3,7 +3,7 @@ def maximum_sum_increasing_subsequence(arr: list) -> int:
         return -1
     _sum = [i for i in arr]
     print(_sum)
-    for i in range(len(arr)):
+    for i in range(1, len(arr)):
         for j in range(0, i):
             if arr[i] > arr[j] and (_sum[j] + arr[i]) > _sum[i]:
                 _sum[i] = _sum[j] + arr[i]
