@@ -1,14 +1,15 @@
 function x() {
     var a  = 7
-    function z() {
-        console.log("Hello")
-    }
+    // function z() {
+    //     console.log("Hello")
+    // }
     function y() {
-        z()
+        // z()
         console.log(a)
     }
-    y()
-    z()
+    // z()
+    return y
 }
 
-x()
+let z = x()
+z()
