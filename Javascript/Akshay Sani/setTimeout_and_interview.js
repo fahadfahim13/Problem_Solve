@@ -1,5 +1,5 @@
 function x() {
-    for(var i = 1; i <= 5; i++){
+    for(let i = 1; i <= 5; i++){
         function close(num){
             setTimeout(() => {
                 console.log(num)
@@ -9,9 +9,9 @@ function x() {
     }
 }
 
-// x()
-for(let i = 1; i <= 5; i++){
-    setTimeout(() => {
-        console.log(i)
-    }, 0)
-}
+x()
+// for(let i = 1; i <= 5; i++){
+//     setTimeout(() => {
+//         console.log(i)
+//     }, 0)
+// }
