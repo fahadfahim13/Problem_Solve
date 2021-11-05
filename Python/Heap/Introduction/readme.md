@@ -30,7 +30,7 @@ process will propagate until it reaches to the head. <br /><br />
 ## How To Store Data
 We know that the heap is a complete binary tree. We will use an array to store the values of 
 the Heap. <br /><br /> 
-![](./Heap-Array_respresentation.drawio.png "Array Representation")![](C:\Users\Fahim\Downloads\Heap-Array_respresentation.drawio.png "Array Representation") 
+![](./Heap-Array_respresentation.drawio.png "Array Representation") 
 <br /> 
 ### Reach to children
 We can go to an element from a node `i` via `2*i+1` and `2*i+2` these two indexes. 
