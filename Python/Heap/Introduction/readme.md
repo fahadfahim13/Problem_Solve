@@ -36,4 +36,11 @@ the Heap. <br /><br />
 We can go to an element from a node `i` via `2*i+1` and `2*i+2` these two indexes. 
 ### Reach to parent
 We can go to the parent of a node by `(i - 1) / 2`. <br /> <br />
-For Min heap, we will do all these things in exactly opposite manner. 
+For Min heap, we will do all these things in exactly opposite manner.
+
+## Complexity
+For inserting a value, we are traversing through only one path of the tree. 
+So, the time complexity for insertion is `log(n)`. <br />
+For deleting a value, again we need to traverse only one path through the tree. 
+So, the time complexity for deletion is `log(n)`. <br />
+The space complexity is `n` as we're using an array. <br />
