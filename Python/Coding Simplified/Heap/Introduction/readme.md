@@ -16,7 +16,7 @@ Let's say the values are = `[10, 11, 7, 15, 13]`
 Initially 10 will be the head. Then it finds 11, the 11 will be at the top and 10 
 will be 11's child. Now, 7 is less than the 11. So, 7 will be inserted as 11's 
 child. <br /> <br />
-![](./Heap.drawio.png "Insert in Heap") <br /> 
+![](Heap.drawio.png "Insert in Heap") <br /> 
 <br /> After that, 15 will be inserted after 10. Then it will check its parent if it 
 is greater than its parent. If it is greater, it will swap with its parent and this 
 process will propagate until it reaches to the head. <br /><br /> 
