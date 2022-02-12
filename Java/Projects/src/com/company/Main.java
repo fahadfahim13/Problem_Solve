@@ -1,5 +1,5 @@
 package com.company;
-import Array.RotateArray;
+import Array.*;
 
 import java.util.ArrayList;
 
