@@ -11,7 +11,7 @@ def twoCitySchedCost(costs: list[list[int]]) -> int:
 
 
 def main():
-    costs = [[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]
+    costs = [[259, 770], [448, 54], [926, 667], [184, 139], [840, 118], [577, 469]]
     print(twoCitySchedCost(costs))
 
 
